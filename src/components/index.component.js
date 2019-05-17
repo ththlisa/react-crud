@@ -17,7 +17,7 @@ export default class Index extends Component {
         console.log(error);
       });
   }
-  tabRow() {
+  TableRow() {
     return this.state.card.map(function(object, i) {
       return <TableRow obj={object} key={i} />;
     });
@@ -36,7 +36,7 @@ export default class Index extends Component {
               <th colSpan="2">Action</th>
             </tr>
           </thead>
-          <tbody>{this.tabRow()}</tbody>
+          <tbody>{this.TableRow()}</tbody>
         </table>
       </div>
     );

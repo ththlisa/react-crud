@@ -60,6 +60,11 @@ export default class Edit extends Component {
         obj
       )
       .then(res => console.log(res.data));
+    this.setState({
+      card_name: "",
+      card_content: "",
+      card_tag: ""
+    });
 
     this.props.history.push("/index");
   }

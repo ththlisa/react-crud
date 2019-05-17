@@ -4,13 +4,13 @@ const Schema = mongoose.Schema;
 // Define collection and schema for Card
 let Card = new Schema(
   {
-    Card_name: {
+    card_name: {
       type: String
     },
-    Card_content: {
+    card_content: {
       type: String
     },
-    Card_tag: {
+    card_tag: {
       type: String
     }
   },
