@@ -21,9 +21,9 @@ export default class Edit extends Component {
       .get("http://localhost:4000/card/edit/" + this.props.match.params.id)
       .then(response => {
         this.setState({
-          person_name: response.data.person_name,
-          business_name: response.data.business_name,
-          business_gst_number: response.data.business_gst_number
+          card_name: response.data.card_name,
+          card_content: response.data.card_content,
+          card_tag: response.data.card_tag
         });
       })
       .catch(function(error) {

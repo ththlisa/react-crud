@@ -4,7 +4,7 @@ const express = require("express");
 const cardRoutes = express.Router();
 
 // Require card model in our routes module
-let card = require("./card.schema");
+let Card = require("./card.schema");
 
 // Defined store route
 cardRoutes.route("/add").post(function(req, res) {
@@ -21,7 +21,7 @@ cardRoutes.route("/add").post(function(req, res) {
 
 // Defined get data(index or listing) route
 cardRoutes.route("/").get(function(req, res) {
-  card.find(function(err, cards) {
+  Card.find(function(err, cards) {
     if (err) {
       console.log(err);
     } else {
@@ -33,14 +33,14 @@ cardRoutes.route("/").get(function(req, res) {
 // Defined edit route
 cardRoutes.route("/edit/:id").get(function(req, res) {
   let id = req.params.id;
-  card.findById(id, function(err, card) {
+  Card.findById(id, function(err, card) {
     res.json(card);
   });
 });
 
 //  Defined update route
 cardRoutes.route("/update/:id").post(function(req, res) {
-  card.findById(req.params.id, function(err, card) {
+  Card.findById(req.params.id, function(err, card) {
     if (!card) res.status(404).send("data is not found");
     else {
       card.card_name = req.body.card_name;
@@ -61,7 +61,7 @@ cardRoutes.route("/update/:id").post(function(req, res) {
 
 // Defined delete | remove | destroy route
 cardRoutes.route("/delete/:id").get(function(req, res) {
-  card.findByIdAndRemove({ _id: req.params.id }, function(err, card) {
+  Card.findByIdAndRemove({ _id: req.params.id }, function(err, card) {
     if (err) res.json(err);
     else res.json("Successfully removed");
   });
