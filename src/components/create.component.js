@@ -1,7 +1,6 @@
 // create.component.js
 
 import React, { Component } from "react";
-import { Editor, EditorState } from "draft-js";
 import axios from "axios";
 
 export default class Create extends Component {
@@ -14,7 +13,7 @@ export default class Create extends Component {
 
     this.state = {
       card_name: "",
-      card_content: { editorState: EditorState.createEmpty() },
+      card_content: "",
       card_tag: ""
     };
   }
@@ -23,9 +22,9 @@ export default class Create extends Component {
       card_name: e.target.value
     });
   }
-  onChangeCardContent(editorState) {
+  onChangeCardContent(e) {
     this.setState({
-      editorState
+      card_content: e.target.value
     });
   }
   onChangeCardTag(e) {
@@ -68,16 +67,12 @@ export default class Create extends Component {
           </div>
           <div className="form-group">
             <label>Card Content: </label>
-            <Editor
-              editorState={this.state.editorState}
-              onChange={this.onChangeCardContent}
-            />
-            {/* <input
+            <input
               type="text"
               className="form-control"
               value={this.state.card_content}
               onChange={this.onChangeCardContent}
-            />  */}
+            />
           </div>
           <div className="form-group">
             <label>Card Tag: </label>
